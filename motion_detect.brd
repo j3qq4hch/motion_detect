@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="2" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -28,11 +28,11 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
@@ -58,7 +58,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="1" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="7" fill="1" visible="no" active="no"/>
@@ -1338,7 +1338,7 @@ http://dangerousprototypes.com</description>
 <attribute name="MANF#" value="IRLML2502TRPBF" x="21.1" y="10.975" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="LED2" library="rc" package="LED0603" value="LED-0603" x="13.6" y="25.05" smashed="yes">
-<attribute name="COLOR" value="GREEN" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
+<attribute name="COLOR" value="BLUE" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="13.6" y="27.6" size="0.5" layer="25" font="vector" ratio="15" align="center"/>
 <attribute name="VALUE" x="13.6" y="26.05" size="0.5" layer="27" font="vector" ratio="15" align="center"/>
 </element>
@@ -1488,17 +1488,11 @@ http://dangerousprototypes.com</description>
 <attribute name="BOM" value="EXCLUDE" x="-9.05" y="13.25" size="1.5" layer="28" font="vector" ratio="15" rot="MR180" display="off"/>
 </element>
 <element name="LED5" library="dp_devices" package="LED-3MM" value="" x="19.6" y="25.05" smashed="yes" rot="R180">
-<attribute name="ASSEMBLY" value="SPECIAL" x="19.6" y="25.05" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="LINK" value="http://www.zip-2002.ru/osveshchenie_i_indikatsiya/svetodiody/86349/1x3x4_red_50_mcd_2,1v/" x="19.6" y="25.05" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="COLOR" value="RED" x="19.6" y="25.05" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="BOM" value="OPTIONAL" x="19.6" y="25.05" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="17.695" y="26.701" size="1.27" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="LED1" library="dp_devices" package="LED-3MM" value="" x="13.6" y="25.05" smashed="yes">
-<attribute name="ASSEMBLY" value="SPECIAL" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
-<attribute name="LINK" value="http://www.zip-2002.ru/osveshchenie_i_indikatsiya/svetodiody/86349/1x3x4_red_50_mcd_2,1v/" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
-<attribute name="COLOR" value="RED" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
-<attribute name="BOM" value="OPTIONAL" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
+<attribute name="COLOR" value="BLUE" x="13.6" y="25.05" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="15.505" y="23.399" size="1.27" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R20" library="rc" package="R0603" value="4K7" x="4.6" y="21.15">

@@ -3624,7 +3624,7 @@ http://dangerousprototypes.com</description>
 <part name="GND6" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="FRAME1" library="frames" deviceset="A4L-LOC" device=""/>
 <part name="LED2" library="rc" deviceset="LED" device="-0603">
-<attribute name="COLOR" value="GREEN"/>
+<attribute name="COLOR" value="BLUE"/>
 </part>
 <part name="R2" library="rc" deviceset="R" device="-0603" value="1K"/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M03X2" device="POGO_PINS"/>
@@ -3740,16 +3740,10 @@ http://dangerousprototypes.com</description>
 <part name="+P25" library="supply_symbols" deviceset="5V" device=""/>
 <part name="+P24" library="supply_symbols" deviceset="VBAT" device=""/>
 <part name="LED5" library="dp_devices" deviceset="LED" device="-3MM">
-<attribute name="ASSEMBLY" value="SPECIAL"/>
-<attribute name="BOM" value="OPTIONAL"/>
 <attribute name="COLOR" value="RED"/>
-<attribute name="LINK" value="http://www.zip-2002.ru/osveshchenie_i_indikatsiya/svetodiody/86349/1x3x4_red_50_mcd_2,1v/"/>
 </part>
 <part name="LED1" library="dp_devices" deviceset="LED" device="-3MM">
-<attribute name="ASSEMBLY" value="SPECIAL"/>
-<attribute name="BOM" value="OPTIONAL"/>
-<attribute name="COLOR" value="RED"/>
-<attribute name="LINK" value="http://www.zip-2002.ru/osveshchenie_i_indikatsiya/svetodiody/86349/1x3x4_red_50_mcd_2,1v/"/>
+<attribute name="COLOR" value="BLUE"/>
 </part>
 <part name="R20" library="rc" deviceset="R" device="-0603" value="4K7"/>
 <part name="+P1" library="supply_symbols" deviceset="3.3V" device=""/>
@@ -4024,14 +4018,10 @@ http://dangerousprototypes.com</description>
 <instance part="+P25" gate="G$1" x="154.94" y="170.18"/>
 <instance part="+P24" gate="G$1" x="160.02" y="170.18"/>
 <instance part="LED5" gate="LED" x="154.94" y="114.3">
-<attribute name="BOM" x="154.94" y="114.3" size="1.778" layer="96" display="off"/>
 <attribute name="COLOR" x="154.94" y="114.3" size="1.778" layer="96" display="off"/>
-<attribute name="LINK" x="154.94" y="114.3" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="LED1" gate="LED" x="167.64" y="114.3">
-<attribute name="BOM" x="167.64" y="114.3" size="1.778" layer="96" display="off"/>
 <attribute name="COLOR" x="167.64" y="114.3" size="1.778" layer="96" display="off"/>
-<attribute name="LINK" x="167.64" y="114.3" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R20" gate="G$1" x="71.12" y="134.62" rot="R270"/>
 <instance part="+P1" gate="G$1" x="71.12" y="142.24"/>
