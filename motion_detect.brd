@@ -182,7 +182,7 @@
 <text x="-3.3" y="7.7" size="1.5" layer="22" font="vector" ratio="15" rot="MR0" align="center">5V</text>
 <text x="-4.175" y="13.325" size="1.5" layer="22" font="vector" ratio="15" rot="MR0" align="center">5V</text>
 <text x="-13.15" y="13.275" size="1.5" layer="22" font="vector" ratio="15" rot="MR0" align="center">BAT</text>
-<text x="0" y="-19" size="1.5" layer="16" ratio="15" rot="MR180" align="center">MOTION DETECTOR V1</text>
+<text x="0" y="-19" size="1.5" layer="16" ratio="15" rot="MR180" align="center">CCO v3.0</text>
 </plain>
 <libraries>
 <library name="motion_detect_masterlib">
@@ -847,6 +847,35 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 <wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.2032" layer="21"/>
 </package>
+<package name="1X03-PTH-2.54">
+<wire x1="1.27" y1="0.635" x2="1.905" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="1.27" x2="3.175" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="3.175" y1="1.27" x2="3.81" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="-0.635" x2="3.175" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="3.175" y1="-1.27" x2="1.905" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="-1.27" x2="1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-3.175" y1="1.27" x2="-1.905" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="-1.905" y1="1.27" x2="-1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-1.905" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-0.635" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="-0.635" y1="-1.27" x2="-1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-3.81" y1="0.635" x2="-3.81" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-3.175" y1="1.27" x2="-3.81" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="-3.81" y1="-0.635" x2="-3.175" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="-1.905" y1="-1.27" x2="-3.175" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="0.635" x2="3.81" y2="-0.635" width="0.2032" layer="21"/>
+<pad name="1" x="-2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="2" x="0" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="3" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<text x="0" y="0" size="1" layer="25" font="vector" ratio="15" align="center">&gt;NAME</text>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
+</package>
 </packages>
 </library>
 <library name="eth_conv_master_lib">
@@ -1448,6 +1477,7 @@ http://dangerousprototypes.com</description>
 <element name="R20" library="rc" package="R0603" value="4K7" x="15.925" y="22.675" rot="R270">
 <attribute name="PACKAGE" value="0603" x="15.925" y="22.675" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
+<element name="CON7" library="pinhead" package="1X03-PTH-2.54" value="PINHEAD_1X03-2.54" x="-7.475" y="0.375"/>
 </elements>
 <signals>
 <signal name="N$5">
@@ -1664,7 +1694,7 @@ http://dangerousprototypes.com</description>
 <via x="-26.85" y="12.125" extent="1-16" drill="0.3" diameter="0.6"/>
 <wire x1="18.65" y1="10.025" x2="18.625" y2="10.05" width="0.2" layer="1"/>
 <wire x1="20.975" y1="10.025" x2="21.1" y2="9.9" width="0.2" layer="1"/>
-<via x="13.7" y="12.85" extent="1-16" drill="0.3" diameter="0.6"/>
+<via x="13.9" y="12.85" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="10.675" y="10.025" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="-1.3" y="17.1" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="4.25" y="18.475" extent="1-16" drill="0.3" diameter="0.6"/>
@@ -1697,7 +1727,7 @@ http://dangerousprototypes.com</description>
 <via x="24.775" y="-15.775" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="3.275" y="-7.475" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="-4.725" y="-3.475" extent="1-16" drill="0.3" diameter="0.6"/>
-<via x="-9.725" y="1.525" extent="1-16" drill="0.3" diameter="0.6"/>
+<via x="-8.875" y="2.6" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="-21.725" y="-9.475" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="-24.725" y="-13.475" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="-17.725" y="-13.475" extent="1-16" drill="0.3" diameter="0.6"/>
@@ -1724,7 +1754,7 @@ http://dangerousprototypes.com</description>
 <via x="23" y="-22.775" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="22.525" y="-22.325" extent="1-16" drill="0.3" diameter="0.6"/>
 <contactref element="TP5" pad="P$1"/>
-<via x="-11.15" y="5.825" extent="1-16" drill="0.3" diameter="0.6"/>
+<via x="-12.5" y="5.5" extent="1-16" drill="0.3" diameter="0.6"/>
 <contactref element="R19" pad="2"/>
 <via x="-24.575" y="14.825" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="-29.275" y="11.3" extent="1-16" drill="0.3" diameter="0.6"/>
@@ -1759,6 +1789,8 @@ http://dangerousprototypes.com</description>
 <via x="6.025" y="23.95" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="9.15" y="21.85" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="10.225" y="25.725" extent="1-16" drill="0.3" diameter="0.6"/>
+<via x="-8.8" y="5.725" extent="1-16" drill="0.3" diameter="0.6"/>
+<via x="-15.1" y="6.5" extent="1-16" drill="0.3" diameter="0.6"/>
 </signal>
 <signal name="SCK">
 <contactref element="IC4" pad="17"/>
@@ -1839,18 +1871,14 @@ http://dangerousprototypes.com</description>
 <wire x1="-15" y1="-13.85" x2="-13.775" y2="-13.85" width="0.2" layer="1"/>
 <wire x1="-13.775" y1="-13.85" x2="-13.15" y2="-13.225" width="0.2" layer="1"/>
 <wire x1="-13.15" y1="-13.225" x2="-13.15" y2="-0.225" width="0.2" layer="1"/>
-<via x="-9.75" y="7.6" extent="1-16" drill="0.3" diameter="0.6"/>
-<wire x1="-10.35" y1="7.875" x2="-10.35" y2="8.675" width="0.2" layer="16"/>
+<via x="-11.025" y="7.65" extent="1-16" drill="0.3" diameter="0.6"/>
 <via x="3.375" y="15.7" extent="1-16" drill="0.3" diameter="0.6"/>
-<wire x1="-9.85" y1="7.6" x2="-9.75" y2="7.6" width="0.2" layer="16"/>
-<wire x1="-9.75" y1="6.9" x2="-9.75" y2="7.6" width="0.2" layer="1"/>
 <wire x1="9.5574" y1="15.5" x2="9.3824" y2="15.675" width="0.2" layer="1"/>
 <wire x1="9.3824" y1="15.675" x2="8.125" y2="15.675" width="0.2" layer="1"/>
 <wire x1="8.125" y1="15.675" x2="6.95" y2="16.85" width="0.2" layer="1"/>
 <wire x1="-13.15" y1="-0.225" x2="-10.05" y2="2.875" width="0.2" layer="1"/>
-<wire x1="-10.05" y1="2.875" x2="-10.05" y2="6.6" width="0.2" layer="1"/>
-<wire x1="-10.05" y1="6.6" x2="-9.75" y2="6.9" width="0.2" layer="1"/>
-<wire x1="-10.35" y1="8.675" x2="-9.6" y2="9.425" width="0.2" layer="16"/>
+<wire x1="-10.05" y1="2.875" x2="-10.05" y2="6.825" width="0.2" layer="1"/>
+<wire x1="-11.025" y1="8" x2="-9.6" y2="9.425" width="0.2" layer="16"/>
 <wire x1="-9.6" y1="9.425" x2="-4.825" y2="9.425" width="0.2" layer="16"/>
 <wire x1="3.375" y1="15.725" x2="3.375" y2="15.7" width="0.2" layer="16"/>
 <wire x1="4.275" y1="16.85" x2="3.375" y2="15.95" width="0.2" layer="1"/>
@@ -1860,23 +1888,13 @@ http://dangerousprototypes.com</description>
 <wire x1="2.075" y1="15.3" x2="2.475" y2="15.7" width="0.2" layer="16"/>
 <wire x1="2.475" y1="15.7" x2="3.375" y2="15.7" width="0.2" layer="16"/>
 <wire x1="6.95" y1="16.85" x2="4.275" y2="16.85" width="0.2" layer="1"/>
-<wire x1="-10.075" y1="7.6" x2="-9.75" y2="7.6" width="0.2" layer="16"/>
-<wire x1="-10.075" y1="7.6" x2="-10.35" y2="7.875" width="0.2" layer="16"/>
+<wire x1="-11.025" y1="8" x2="-11.025" y2="7.65" width="0.2" layer="16"/>
+<wire x1="-10.05" y1="6.825" x2="-10.875" y2="7.65" width="0.2" layer="1"/>
+<wire x1="-10.875" y1="7.65" x2="-11.025" y2="7.65" width="0.2" layer="1"/>
 </signal>
 <signal name="D8">
 <contactref element="IC4" pad="12"/>
-<contactref element="MODULE2" pad="24"/>
-<contactref element="R3" pad="2"/>
-<wire x1="-28.3" y1="8.175" x2="-28.15" y2="8.175" width="0.2" layer="1"/>
-<wire x1="-28" y1="1.15" x2="-29.3" y2="1.15" width="0.2" layer="1"/>
-<via x="-29.3" y="1.15" extent="1-16" drill="0.3" diameter="0.6"/>
-<wire x1="-29.3" y1="1.15" x2="-29.3" y2="8.175" width="0.2" layer="16"/>
-<via x="-29.3" y="8.175" extent="1-16" drill="0.3" diameter="0.6"/>
-<wire x1="-29.3" y1="8.175" x2="-28.15" y2="8.175" width="0.2" layer="1"/>
-<wire x1="-27.6" y1="7.85" x2="-13.5" y2="7.85" width="0.2" layer="1"/>
-<wire x1="-28.15" y1="8.175" x2="-27.95" y2="7.975" width="0.2" layer="1"/>
-<via x="-12.125" y="6.975" extent="1-16" drill="0.3"/>
-<wire x1="-13.5" y1="7.85" x2="-12.625" y2="6.975" width="0.2" layer="1"/>
+<via x="-10.625" y="6.15" extent="1-16" drill="0.3"/>
 <wire x1="9.5574" y1="16.3" x2="8.35" y2="16.3" width="0.2" layer="1"/>
 <via x="8.35" y="16.3" extent="1-16" drill="0.3"/>
 <wire x1="8.35" y1="16.3" x2="7.85" y2="16.3" width="0.2" layer="16"/>
@@ -1885,16 +1903,16 @@ http://dangerousprototypes.com</description>
 <wire x1="3.65" y1="14.4" x2="3.3" y2="14.05" width="0.2" layer="16"/>
 <wire x1="3.3" y1="14.05" x2="1.575" y2="14.05" width="0.2" layer="16"/>
 <wire x1="1.575" y1="14.05" x2="-4.25" y2="8.225" width="0.2" layer="16"/>
-<wire x1="-4.25" y1="8.225" x2="-8.575" y2="8.225" width="0.2" layer="16"/>
-<wire x1="-12.625" y1="6.975" x2="-12.125" y2="6.975" width="0.2" layer="1"/>
-<wire x1="-8.575" y1="8.225" x2="-8.7" y2="8.1" width="0.2" layer="16"/>
-<wire x1="-8.7" y1="8.1" x2="-8.7" y2="7.15" width="0.2" layer="16"/>
-<wire x1="-8.7" y1="7.15" x2="-9.325" y2="6.525" width="0.2" layer="16"/>
-<wire x1="-11.775" y1="6.525" x2="-12.125" y2="6.875" width="0.2" layer="16"/>
-<wire x1="-12.125" y1="6.875" x2="-12.125" y2="6.975" width="0.2" layer="16"/>
-<wire x1="-9.325" y1="6.525" x2="-11.775" y2="6.525" width="0.2" layer="16"/>
-<wire x1="-27.6" y1="7.85" x2="-27.925" y2="8.175" width="0.2" layer="1"/>
-<wire x1="-27.925" y1="8.175" x2="-28.15" y2="8.175" width="0.2" layer="1"/>
+<wire x1="-4.25" y1="8.225" x2="-8.4" y2="8.225" width="0.2" layer="16"/>
+<contactref element="MODULE2" pad="2"/>
+<wire x1="-15" y1="-12.35" x2="-13.725" y2="-12.35" width="0.2" layer="1"/>
+<wire x1="-13.725" y1="-12.35" x2="-13.55" y2="-12.175" width="0.2" layer="1"/>
+<wire x1="-13.55" y1="-12.175" x2="-13.55" y2="-0.025" width="0.2" layer="1"/>
+<wire x1="-13.55" y1="-0.025" x2="-10.45" y2="3.075" width="0.2" layer="1"/>
+<wire x1="-10.45" y1="3.075" x2="-10.45" y2="5.975" width="0.2" layer="1"/>
+<wire x1="-10.45" y1="5.975" x2="-10.625" y2="6.15" width="0.2" layer="1"/>
+<wire x1="-10.475" y1="6.15" x2="-8.4" y2="8.225" width="0.2" layer="16"/>
+<wire x1="-10.475" y1="6.15" x2="-10.625" y2="6.15" width="0.2" layer="16"/>
 </signal>
 <signal name="A3">
 <contactref element="IC4" pad="26"/>
@@ -1972,19 +1990,8 @@ http://dangerousprototypes.com</description>
 <signal name="D4">
 <contactref element="IC4" pad="2"/>
 <contactref element="R20" pad="2"/>
-<contactref element="MODULE2" pad="2"/>
-<wire x1="-15" y1="-12.35" x2="-13.95" y2="-12.35" width="0.2" layer="1"/>
-<wire x1="-13.95" y1="-12.35" x2="-13.55" y2="-11.95" width="0.2" layer="1"/>
-<wire x1="-13.55" y1="-11.95" x2="-13.55" y2="-0.025" width="0.2" layer="1"/>
-<wire x1="-13.55" y1="-0.025" x2="-10.45" y2="3.075" width="0.2" layer="1"/>
-<wire x1="-10.45" y1="3.075" x2="-10.45" y2="7.125" width="0.2" layer="1"/>
-<via x="-10.45" y="7.125" extent="1-16" drill="0.3"/>
-<wire x1="-10.45" y1="7.125" x2="-10.35" y2="7" width="0.2" layer="16"/>
-<wire x1="-10.35" y1="7" x2="-9.475" y2="7" width="0.2" layer="16"/>
-<wire x1="-9.475" y1="7" x2="-9.125" y2="7.35" width="0.2" layer="16"/>
-<wire x1="-9.125" y1="7.35" x2="-9.125" y2="8.3" width="0.2" layer="16"/>
-<wire x1="-9.125" y1="8.3" x2="-8.8" y2="8.625" width="0.2" layer="16"/>
-<wire x1="-8.8" y1="8.625" x2="-4.475" y2="8.625" width="0.2" layer="16"/>
+<via x="-11.025" y="6.875" extent="1-16" drill="0.3"/>
+<wire x1="-8.6" y1="8.625" x2="-4.475" y2="8.625" width="0.2" layer="16"/>
 <wire x1="-4.475" y1="8.625" x2="1.4" y2="14.5" width="0.2" layer="16"/>
 <wire x1="1.4" y1="14.5" x2="3.125" y2="14.5" width="0.2" layer="16"/>
 <wire x1="3.125" y1="14.5" x2="3.45" y2="14.825" width="0.2" layer="16"/>
@@ -1997,6 +2004,20 @@ http://dangerousprototypes.com</description>
 <wire x1="5.775" y1="14.825" x2="8.475" y2="17.525" width="0.2" layer="16"/>
 <wire x1="15.85" y1="20.1926" x2="15.85" y2="17.875" width="0.2" layer="1"/>
 <wire x1="8.475" y1="17.525" x2="14.925" y2="17.525" width="0.2" layer="16"/>
+<contactref element="MODULE2" pad="24"/>
+<contactref element="R3" pad="2"/>
+<wire x1="-28.3" y1="8.175" x2="-28.15" y2="8.175" width="0.2" layer="1"/>
+<wire x1="-28" y1="1.15" x2="-29.3" y2="1.15" width="0.2" layer="1"/>
+<via x="-29.3" y="1.15" extent="1-16" drill="0.3" diameter="0.6"/>
+<wire x1="-29.3" y1="1.15" x2="-29.3" y2="8.175" width="0.2" layer="16"/>
+<via x="-29.3" y="8.175" extent="1-16" drill="0.3" diameter="0.6"/>
+<wire x1="-28.15" y1="8.175" x2="-27.775" y2="7.8" width="0.2" layer="1"/>
+<wire x1="-28.15" y1="8.175" x2="-29.3" y2="8.175" width="0.2" layer="1"/>
+<wire x1="-27.775" y1="7.8" x2="-13.525" y2="7.8" width="0.2" layer="1"/>
+<wire x1="-13.525" y1="7.8" x2="-12.6" y2="6.875" width="0.2" layer="1"/>
+<wire x1="-10.35" y1="6.875" x2="-8.6" y2="8.625" width="0.2" layer="16"/>
+<wire x1="-10.35" y1="6.875" x2="-11.025" y2="6.875" width="0.2" layer="16"/>
+<wire x1="-12.6" y1="6.875" x2="-11.025" y2="6.875" width="0.2" layer="1"/>
 </signal>
 <signal name="D5">
 <contactref element="IC4" pad="9"/>
@@ -2289,7 +2310,6 @@ http://dangerousprototypes.com</description>
 <via x="-9.75" y="8.4" extent="1-16" drill="0.3" diameter="0.6"/>
 <wire x1="-12.15" y1="8" x2="-11.75" y2="8.4" width="0.2" layer="1"/>
 <wire x1="-11.75" y1="8.4" x2="-9.75" y2="8.4" width="0.2" layer="1"/>
-<wire x1="-9.75" y1="8.4" x2="-9.55" y2="8.6" width="0.2" layer="16"/>
 <via x="2.825" y="15.1" extent="1-16" drill="0.3" diameter="0.6"/>
 <wire x1="4.2" y1="14.375" x2="4.2" y2="14.55" width="0.2" layer="1"/>
 <wire x1="4.2" y1="14.55" x2="4.05" y2="14.7" width="0.2" layer="1"/>
@@ -2299,8 +2319,6 @@ http://dangerousprototypes.com</description>
 <wire x1="4.025" y1="14.7" x2="3.675" y2="15.05" width="0.2" layer="1"/>
 <wire x1="3.675" y1="15.05" x2="2.875" y2="15.05" width="0.2" layer="1"/>
 <wire x1="2.875" y1="15.05" x2="2.825" y2="15.1" width="0.2" layer="1"/>
-<wire x1="-4.65" y1="9.025" x2="-9.125" y2="9.025" width="0.2" layer="16"/>
-<wire x1="-9.125" y1="9.025" x2="-9.75" y2="8.4" width="0.2" layer="16"/>
 <wire x1="-4.65" y1="9.025" x2="1.225" y2="14.9" width="0.2" layer="16"/>
 <wire x1="1.225" y1="14.9" x2="2.625" y2="14.9" width="0.2" layer="16"/>
 <wire x1="2.625" y1="14.9" x2="2.825" y2="15.1" width="0.2" layer="16"/>
@@ -2310,6 +2328,9 @@ http://dangerousprototypes.com</description>
 <wire x1="-16.5" y1="8.45" x2="-12.6" y2="8.45" width="0.5" layer="1"/>
 <wire x1="-12.6" y1="8.45" x2="-12.15" y2="8" width="0.5" layer="1"/>
 <wire x1="-16.5" y1="10.475" x2="-16.5" y2="8.45" width="0.5" layer="1"/>
+<wire x1="-9.75" y1="8.4" x2="-9.55" y2="8.6" width="0.2" layer="16"/>
+<wire x1="-9.125" y1="9.025" x2="-4.65" y2="9.025" width="0.2" layer="16"/>
+<wire x1="-9.125" y1="9.025" x2="-9.75" y2="8.4" width="0.2" layer="16"/>
 </signal>
 <signal name="N$9">
 <contactref element="IC2" pad="5"/>
@@ -2494,20 +2515,18 @@ http://dangerousprototypes.com</description>
 <wire x1="0.875" y1="15.7" x2="1.85" y2="15.7" width="0.2" layer="16"/>
 <wire x1="1.85" y1="15.7" x2="2.8" y2="16.65" width="0.2" layer="16"/>
 <wire x1="2.8" y1="16.65" x2="2.8" y2="16.925" width="0.2" layer="16"/>
-<wire x1="-11.25" y1="7.25" x2="-10.8" y2="7.7" width="0.2" layer="16"/>
-<wire x1="-10.8" y1="7.7" x2="-10.8" y2="8.8" width="0.2" layer="16"/>
-<wire x1="-10.8" y1="8.8" x2="-9.775" y2="9.825" width="0.2" layer="16"/>
+<wire x1="-11.625" y1="7.975" x2="-9.775" y2="9.825" width="0.2" layer="16"/>
 <wire x1="9.3824" y1="17.725" x2="3.9" y2="17.725" width="0.2" layer="1"/>
 <wire x1="3.9" y1="17.725" x2="3.1" y2="16.925" width="0.2" layer="1"/>
 <wire x1="-28.1" y1="7.4" x2="-13.725" y2="7.4" width="0.2" layer="1"/>
-<wire x1="-13.725" y1="7.4" x2="-12.675" y2="6.35" width="0.2" layer="1"/>
-<wire x1="-12.675" y1="6.35" x2="-11.85" y2="6.35" width="0.2" layer="1"/>
-<wire x1="-11.25" y1="7" x2="-11.25" y2="7.125" width="0.2" layer="1"/>
-<wire x1="-11.25" y1="7.125" x2="-11.25" y2="7.1" width="0.2" layer="1"/>
-<wire x1="-11.85" y1="6.35" x2="-11.25" y2="7" width="0.2" layer="1"/>
-<wire x1="-11.25" y1="7.25" x2="-11.25" y2="7.125" width="0.2" layer="16"/>
-<via x="-11.25" y="7.125" extent="1-16" drill="0.3"/>
+<via x="-11.425" y="6.175" extent="1-16" drill="0.3"/>
 <wire x1="-28.1" y1="7.4" x2="-29.25" y2="6.25" width="0.2" layer="1"/>
+<wire x1="-11.5" y1="6.1" x2="-11.425" y2="6.175" width="0.2" layer="1"/>
+<wire x1="-11.625" y1="7.975" x2="-11.625" y2="6.375" width="0.2" layer="16"/>
+<wire x1="-11.625" y1="6.375" x2="-11.425" y2="6.175" width="0.2" layer="16"/>
+<wire x1="-13.725" y1="7.4" x2="-12.775" y2="6.45" width="0.2" layer="1"/>
+<wire x1="-12.775" y1="6.45" x2="-11.7" y2="6.45" width="0.2" layer="1"/>
+<wire x1="-11.7" y1="6.45" x2="-11.425" y2="6.175" width="0.2" layer="1"/>
 </signal>
 <signal name="N$10">
 <contactref element="CON6" pad="VBUS"/>
@@ -2557,6 +2576,11 @@ http://dangerousprototypes.com</description>
 <wire x1="18.83" y1="25.05" x2="18.38" y2="25.5" width="0.2" layer="1"/>
 <wire x1="18.38" y1="25.5" x2="17.45" y2="25.5" width="0.2" layer="1"/>
 <wire x1="17.45" y1="25.5" x2="17.45" y2="25.85" width="0.2" layer="1"/>
+</signal>
+<signal name="N$14">
+<contactref element="CON7" pad="2"/>
+<contactref element="CON7" pad="3"/>
+<wire x1="-4.935" y1="0.375" x2="-7.475" y2="0.375" width="0.2" layer="16"/>
 </signal>
 </signals>
 <errors>
