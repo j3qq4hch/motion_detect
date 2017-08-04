@@ -10,17 +10,20 @@
 #include "hc12.h"
 #include "functions.h"
 
-// Для прошивки 
-#define reciever true
 
-String device_ID = "040055";
+
 boolean power_plugged = false;
 
+/// Для прошивки датчика - поставьте // в начале строки
+#define reciever true
 
+//  ID прошиваемого устройства
+String device_ID = "040055";
+  #warning  Проверьте ID прошиваемого устройства, убедитесь что поставили актульный номер
 #ifdef reciever
   #include "reciever.h"
-  #warning !!!!!!!!   Прошивка для приемника c ID device_ID
-
+  #warning !!!!!!!!   Внимание!!! Это прошивка для ___Приемника.  Закомментируйте строку выше  ____#define reciever_____ true для прошивки Датчика
 #else
   #include "transmitter.h"
+  #warning !!!!!!!!   Внимание!!! Это прошивка для ___Датчика.    Раскомемнтируйте строку выше  ____#define reciever_____ true для прошивки Приемника
 #endif

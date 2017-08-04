@@ -41,8 +41,6 @@ void sensor_started() {
   pinMode(alarm_pin, INPUT);
 
 }
-
-
 void try_to_add_new_transmitter() {
   boolean flag = true;
   while (digitalRead(button_pin) == LOW && flag) {

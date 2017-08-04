@@ -31,7 +31,7 @@ float battery_voltage() {
   digitalWrite(bat_voltage_measure_enable_pin, HIGH);
   float voltage = analogRead(bat_voltage_measure_pin) / 1024.0 * 5 * 1.014;
   digitalWrite(bat_voltage_measure_enable_pin, LOW);
-  return voltage;
+  return voltage*2;
 }
 void turn_5v_on() {
   pinMode(DC5_enable_pin,OUTPUT);

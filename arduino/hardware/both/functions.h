@@ -14,7 +14,7 @@ void unsleep_interrupt() {
     sleeping = false;
     prev_button_status=HIGH;
   }
-  if (digitalRead(button_pin) == HIGH) && prev_button_status == HIGH && sleeping){
+  if (digitalRead(button_pin) == HIGH && prev_button_status == HIGH && sleeping){
     prev_button_status=HIGH;
   }
 }
