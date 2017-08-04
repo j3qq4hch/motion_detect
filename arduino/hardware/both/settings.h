@@ -1,5 +1,5 @@
 
-#define transmitter_ID_length 6
+#define device_ID_length 6
 
 
 #define hc_12_setted_eeprom_address 0

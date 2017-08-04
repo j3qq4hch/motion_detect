@@ -45,14 +45,14 @@ void power_down_while_button_pressed_2s() {
 String getId(String input) {
   String s = "";
   int i;
-  for (i = 1; i < transmitter_ID_length + 1; i++) {
+  for (i = 1; i < device_ID_length + 1; i++) {
     s += input.charAt(i);
   }
   return s;
 }
 
 boolean isValidNumber(String str) {
-  for (byte i = 1; i < transmitter_ID_length + 1; i++)
+  for (byte i = 1; i < device_ID_length + 1; i++)
   {
     if (isDigit(str.charAt(i))) return true;
   }
