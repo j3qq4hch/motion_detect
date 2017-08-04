@@ -173,7 +173,7 @@ void setup() {
 
 }
 void loop() {
-  power_down_while_button_pressed_2s();
+  //power_down_while_button_pressed_2s();
   prepare_after_unsleep();
   if (!sleeping)
 

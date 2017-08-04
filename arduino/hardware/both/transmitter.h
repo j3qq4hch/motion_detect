@@ -82,21 +82,11 @@ void hc_12_init() {
   delay(HC_12_SEND_DELAY);
 }
 
-/*
-  unsigned long m1;
-  unsigned long m2;
-  unsigned long m3;
-  unsigned long m4;
-  unsigned long m5;
-  unsigned long m6;
-*/
-
 void sleep_and_react (const byte interval)
-
 
 {
 
-  if (digitalRead(power_pin) == HIGH) {
+  if (digitalRead(power_plugged_pin) == HIGH) {
     usb_plugged = true;
   } else {
     usb_plugged = false;
@@ -134,11 +124,6 @@ void sleep_and_react (const byte interval)
         s = s8;
       }
     }
-    
-#ifdef DEBUG
-    Serial.println("preparing to sleep");
-    delay(100);
-#endif
 
     noInterrupts ();
     MCUSR = 0;                          // сбрасываем различные флаги
@@ -171,11 +156,6 @@ void sleep_and_react (const byte interval)
     else {
       led_off(red_pin);
     }
-#ifdef DEBUG
-    delay(200);
-    Serial.begin(1200);
-    Serial.println(pass_first_alarms);
-#endif
     if (usb_plugged) {
       s = s1;
     }
