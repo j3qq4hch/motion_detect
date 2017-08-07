@@ -143,7 +143,7 @@ void prepare_after_unsleep() {
 }
 
 void setup() {
-  power_down_while_button_pressed_2s();
+  //power_down_while_button_pressed_2s();
   prepare_after_unsleep();
   powerbank_last_activation_time=millis();
 }
