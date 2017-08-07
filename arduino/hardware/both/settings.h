@@ -2,7 +2,7 @@
 #define device_ID_length 6
 
 
-#define hc_12_setted_eeprom_address 0
+#define hc12_setted_eeprom_address 0
 #define transmitter_ID_eeprom_address 2
 
 #define bluetooth_name_prefix String("GRUZ_")
@@ -25,12 +25,12 @@
 #define id_cmd          'I'
 #define no_polling_cmd  'N'
 #define no_polling_stopped_cmd  'S'
-#define HC_12_SLEEP     "AT+SLEEP\r\n"
-#define HC_12_SET_DEFAULT   "AT+DEFAULT\r\n"
-#define HC_12_SET_FU    "AT+FU4\r\n"
-#define HC_12_SET_CH    "AT+C055\r\n"
-#define HC_12_SET_PDB   "AT+P8\r\n"
-#define HC_12_WAKEUP    "AT\r\n"
+#define hc12_SLEEP     "AT+SLEEP\r\n"
+#define hc12_SET_DEFAULT   "AT+DEFAULT\r\n"
+#define hc12_SET_FU    "AT+FU4\r\n"
+#define hc12_SET_CH    "AT+C055\r\n"
+#define hc12_SET_PDB   "AT+P8\r\n"
+#define hc12_WAKEUP    "AT\r\n"
 
 #define bluetooth_name_cmd "AT+NAME"
 #define bluetooth_sleep_cmd "AT+SLEEP"
@@ -38,7 +38,7 @@
 
 #define AT_RESPONSE_DELAY mSLEEP_500MS    //Delay after sending AT cmd to HC-12
 #define AT_EXIT_DELAY     mSLEEP_250MS     //Delay after  setting SET pin of HC-12 to LOW or HIGH
-#define HC_12_SEND_DELAY  mSLEEP_1S    //Delay after sending data (for FU4 - minimum 1s)
+#define hc12_SEND_DELAY  mSLEEP_1S    //Delay after sending data (for FU4 - minimum 1s)
 
 
 #define  battery_high_voltage   4.0
