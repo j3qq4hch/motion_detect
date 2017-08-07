@@ -7,11 +7,11 @@ const unsigned int microseconds_to_unsleep = 2000;
 void unsleep_interrupt() {
   noInterrupts();
   if (digitalRead(button_pin) == LOW )  {
-  delayMicroseconds(microseconds_to_unsleep);
-  if (digitalRead(button_pin) == LOW) {
-    sleeping = false;
+    delayMicroseconds(microseconds_to_unsleep);
+    if (digitalRead(button_pin) == LOW) {
+      sleeping = false;
+    }
   }
-  } 
 }
 void power_down_while_button_pressed_2s() {
   byte adcsra_save = ADCSRA;

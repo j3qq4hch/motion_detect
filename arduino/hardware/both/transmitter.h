@@ -45,7 +45,7 @@ void sleep_and_react (const byte interval)
   }
 
 
-  if (!usb_plugged) {
+  
     if (pir_alarm && digitalRead(pir_pin) == HIGH )
     {
 
@@ -114,84 +114,12 @@ void sleep_and_react (const byte interval)
     else {
       s = s8;
     }
-  }
-  else
-  {
-    led_on(green_pin);
-    usb_plugged = digitalRead(power_pin) == HIGH;
-  }
 }
-float battery_voltage() {
-  return analogRead(battery_pin) / 1024.0 * 5 * 1.014;
-}
-
-void prepareLedPins () {
-  pinMode(red_pin, OUTPUT);
-  pinMode(green_pin, OUTPUT);
-  pinMode(led_common_pin, OUTPUT);
-  digitalWrite(led_common_pin, led_common);
-}
-void releaseLedPins() {
-  pinMode(red_pin, INPUT);
-  pinMode(green_pin, INPUT);
-  pinMode(led_common_pin, INPUT);
-
-}
-void blink_red(int duration) {
-  prepareLedPins();
-  digitalWrite(red_pin, led_pin);
-  delay(duration);
-  digitalWrite(red_pin, !led_pin);
-  releaseLedPins();
-
-}
-
-void blink_green(int duration) {
-  prepareLedPins();
-  digitalWrite(green_pin, led_pin);
-  delay(duration);
-  digitalWrite(green_pin, !led_pin);
-  releaseLedPins();
-}
-
-void blink_yellow(int duration) {
-  prepareLedPins();
-  digitalWrite(red_pin, led_pin);
-  digitalWrite(green_pin, led_pin);
-  delay(duration);
-  digitalWrite(red_pin, !led_pin);
-  digitalWrite(green_pin, !led_pin);
-  releaseLedPins();
-}
-
-void led_on(int pin) {
-  prepareLedPins();
-  digitalWrite(pin, led_pin);
-  releaseLedPins();
-}
-void led_off(int pin) {
-  prepareLedPins();
-  digitalWrite(pin, !led_pin);
-  releaseLedPins();
-}
-void battery_status(int duration) {
-  float b = battery_voltage();
-  if (b > 3.9) {
-    blink_green(duration);
-  } else if (b > 3.6) {
-    blink_yellow(duration);
-  }
-  else {
-    blink_red(duration);
-  }
-}
-
-
-
 
 
 void setup () {
-
+  power_down_while_button_pressed_2s();
+  prepare_after_unsleep();
 
   pinMode(pir_pin, INPUT);
   pinMode(power_pin, INPUT);
