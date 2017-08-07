@@ -4,6 +4,8 @@ const String r_firmware_ver        = "f0.2";
 String sensor_init_string = "";
 unsigned int last_polling = 0;
 String transmitter_ID;
+unsigned long int powerbank_last_activation_time=0;
+unsigned long int powerbank_activation_interval=5*3600*1000; //5 hours
 
 
 void no_polling() {
@@ -143,8 +145,13 @@ void prepare_after_unsleep() {
 void setup() {
   power_down_while_button_pressed_2s();
   prepare_after_unsleep();
+  powerbank_last_activation_time=millis();
 }
 void loop() {
+  if(millis-powerbank_last_activation_time>powerbank_activation_interval){
+    activate_power_bank();
+    powerbank_last_activation_time=millis();
+    }
   if ((millis() - last_polling) > polling_timeout) {
       no_polling();
   }
