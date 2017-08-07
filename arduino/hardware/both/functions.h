@@ -2,21 +2,16 @@ volatile boolean sleeping = true;
 
 volatile unsigned long millis_from_button_pressed = 0;
 volatile int prev_button_status = HIGH;
-const unsigned int millis_to_unsleep = 2000;
+const unsigned int microseconds_to_unsleep = 2000;
 
 void unsleep_interrupt() {
-  if (digitalRead(button_pin) == LOW && prev_button_status == HIGH)  {
-    millis_from_button_pressed = millis();
-    prev_button_status=LOW;
-  }
-  delay(millis_to_unsleep);
-  if (digitalRead(button_pin) == LOW &&   millis() - millis_from_button_pressed >= millis_to_unsleep) {
+  noInterrupts();
+  if (digitalRead(button_pin) == LOW )  {
+  delayMicroseconds(microseconds_to_unsleep);
+  if (digitalRead(button_pin) == LOW) {
     sleeping = false;
-    prev_button_status=HIGH;
   }
-  if (digitalRead(button_pin) == HIGH && prev_button_status == HIGH && sleeping){
-    prev_button_status=HIGH;
-  }
+  } 
 }
 void power_down_while_button_pressed_2s() {
   byte adcsra_save = ADCSRA;
@@ -32,7 +27,7 @@ void power_down_while_button_pressed_2s() {
     power_all_disable ();   // выключаем все модули
     set_sleep_mode (SLEEP_MODE_PWR_DOWN);   // устанавливаем режим сна
     sleep_enable();
-    attachInterrupt (digitalPinToInterrupt(button_pin), unsleep_interrupt, LOW);
+    attachInterrupt (digitalPinToInterrupt(button_pin), unsleep_interrupt, FALLING);
     interrupts ();
     sleep_cpu ();
   }

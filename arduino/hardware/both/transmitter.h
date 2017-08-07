@@ -33,54 +33,6 @@ ISR (WDT_vect)
 {
   wdt_disable();  // отключаем сторожевой таймер
 }
-void hc_12_wakeup() {
-  pinMode(hc_12_set_pin, OUTPUT);
-  digitalWrite(hc_12_set_pin, LOW);
-  delay(AT_EXIT_DELAY);
-  digitalWrite(hc_12_set_pin, HIGH);
-  delay(AT_EXIT_DELAY);
-}
-void hc_12_sleep() {
-  pinMode(hc_12_set_pin, OUTPUT);
-  digitalWrite(hc_12_set_pin, LOW);
-  delay(AT_EXIT_DELAY);
-  Serial.print(F(HC_12_SLEEP));
-  delay(AT_RESPONSE_DELAY);
-  digitalWrite(hc_12_set_pin, HIGH);
-  delay(AT_EXIT_DELAY);
-}
-
-void hc_12_init() {
-  pinMode(hc_12_set_pin, OUTPUT);
-  #ifdef reflash
-  byte hc_12_setted = EEPROM.read(hc_12_setted_eeprom_address);
-  if (hc_12_setted != 1) {
-  #endif
-    Serial.begin(9600);
-    delay(HC_12_SEND_DELAY);
-    digitalWrite(hc_12_set_pin, LOW);
-    delay(AT_EXIT_DELAY);
-    Serial.print(F(HC_12_SET_DEFAULT));
-    delay(AT_RESPONSE_DELAY);
-    Serial.print(F(HC_12_SET_CH));
-    delay(AT_RESPONSE_DELAY);
-    Serial.print(F(HC_12_SET_FU));
-    delay(AT_RESPONSE_DELAY);
-    Serial.print(F(HC_12_SET_PDB));
-    delay(AT_RESPONSE_DELAY);
-    digitalWrite(hc_12_set_pin, HIGH);
-    delay(AT_EXIT_DELAY);
-    EEPROM.write(hc_12_setted_eeprom_address, 1);
-  #ifdef reflash
-     }
-  #endif
-  digitalWrite(hc_12_set_pin, HIGH);
-  Serial.begin(1200);
-  
-  delay(AT_EXIT_DELAY);
-  Serial.print(id_cmd + device_ID + 'b' + battery_voltage());
-  delay(HC_12_SEND_DELAY);
-}
 
 void sleep_and_react (const byte interval)
 
@@ -254,6 +206,8 @@ void setup () {
   blink_yellow(blink_duration);
 
   hc_12_init();
+  Serial.print(id_cmd + device_ID + 'b' + battery_voltage());
+  delay(HC_12_SEND_DELAY);
   hc_12_sleep();
   battery_status(blink_duration);
 }
@@ -267,61 +221,6 @@ void loop()
 }
 
 
-
-//#define reflash true
-
-
-#include <avr/wdt.h>
-#include <avr/power.h>
-#include <avr/sleep.h>
-#include <EEPROM.h>
-
-//#define DEBUG true
-#define hc_12_setted_eeprom_address 0
-
-#define init_hc_12 true
-
-#define battery_pin   A3
-
-#define pir_pin       2
-#define hc_12_set_pin 5
-#define sound_pin   11
-
-#define red_pin 10
-#define green_pin 4
-
-
-#define blink_duration      500
-#define blink_long_duration      2000
-#define blink_fast_duration 5
-
-
-#define power_pin 7
-#define button_pin 6
-
-
-#define led_common_pin 3
-
-#define led_common  LOW
-#define led_pin  HIGH
-
-
-
-#define polling_cmd     'P'
-#define pir_cmd         'A'
-#define id_cmd          'I'
-#define HC_12_SLEEP     "AT+SLEEP\r\n"
-#define HC_12_SET_DEFAULT   "AT+DEFAULT\r\n"
-#define HC_12_SET_FU    "AT+FU4\r\n"
-#define HC_12_SET_CH    "AT+C055\r\n"
-#define HC_12_SET_PDB   "AT+P8\r\n"
-#define HC_12_WAKEUP    "AT\r\n"
-
-
-
-#define AT_RESPONSE_DELAY 500    //Delay after sending AT cmd to HC-12
-#define AT_EXIT_DELAY     200     //Delay after  setting SET pin of HC-12 to LOW or HIGH
-#define HC_12_SEND_DELAY  1200    //Delay after sending data (for FU4 - minimum 1s)
 
 
 boolean usb_plugged = false;

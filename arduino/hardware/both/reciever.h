@@ -14,33 +14,6 @@ void no_polling() {
   last_polling = millis();
 }
 
-// Показываем статус аккумуляторы: если ОК - длинное включение светодиода, если средне - среднее, малый заряд - короткое моргание
-void show_battery_status() {
-  float b = battery_voltage();
-  if (b > battery_high_voltage) {
-    blink_red(blink_long_duration);
-  } else if (b > battery_medium_voltage) {
-    blink_red(blink_duration);
-  }
-  else {
-    blink_red(blink_short_duration);
-  }
-}
-
-
-
-void sensor_started() {
-  pinMode(alarm_pin, OUTPUT);
-  tone(alarm_pin, Do);
-  sleep_delay(mSLEEP_120MS);
-  tone(alarm_pin, Mi);
-  sleep_delay(mSLEEP_120MS);
-  tone(alarm_pin, Sol);
-  sleep_delay(mSLEEP_120MS);
-  noTone(alarm_pin);
-  pinMode(alarm_pin, INPUT);
-
-}
 void try_to_add_new_transmitter() {
   boolean flag = true;
   while (digitalRead(button_pin) == LOW && flag) {
@@ -61,7 +34,6 @@ void try_to_add_new_transmitter() {
 
   }
 }
-
 
 
 
@@ -153,8 +125,6 @@ void prepare_after_wake_up() {
   sleep_delay(mSLEEP_250MS);
   bluetooth.println(bluetooth_auto_sleep_cmd);
   Serial.print(looking_for_transmitter_cmd + transmitter_ID);
-
-
 }
 
 void prepare_after_unsleep() {
@@ -169,22 +139,19 @@ void prepare_after_unsleep() {
   show_battery_status();
   last_polling = millis();
 }
-void setup() {
 
+void setup() {
+  power_down_while_button_pressed_2s();
+  prepare_after_unsleep();
 }
 void loop() {
-  //power_down_while_button_pressed_2s();
-  prepare_after_unsleep();
-  if (!sleeping)
-
-    if ((millis() - last_polling) > polling_timeout) {
+  if ((millis() - last_polling) > polling_timeout) {
       no_polling();
-    }
+  }
   if (life) {
     life = false;
     blink_red(blink_short_duration);
   }
-
   if (bluetooth.available()) {
     String bls = bluetooth.readString();
     if (bls == (pir_cmd + transmitter_ID)) {
@@ -192,6 +159,9 @@ void loop() {
     }
     if (bls == "voltage") {
       bluetooth.print("power" + (String) + digitalRead(power_plugged_pin) + 'v' + (String) battery_voltage() + sensor_init_string + r_firmware_ver);
+    }
+    if (bls == "ping") {
+      Serial.print("ping" + transmitter_ID);
     }
   }
   if (Serial.available()) {
@@ -201,20 +171,17 @@ void loop() {
       bluetooth.print(s);
       alarm();
     }
-
     if (s.indexOf(id_cmd + transmitter_ID) > -1) {
       last_polling = millis();
       bluetooth.print(s);
       sensor_init_string = s;
       sensor_started();
     }
-
     if (s.indexOf(polling_cmd + transmitter_ID) > -1) {
       last_polling = millis();
       bluetooth.print(s);
       polling_ok();
     }
-
   }
 }
 
