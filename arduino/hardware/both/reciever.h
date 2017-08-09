@@ -4,8 +4,8 @@ const String r_firmware_ver        = "f0.2";
 String sensor_init_string = "";
 unsigned int last_polling = 0;
 String transmitter_ID;
-unsigned long int powerbank_last_activation_time=0;
-unsigned long int powerbank_activation_interval=5*3600*1000; //5 hours
+unsigned long int powerbank_last_activation_time = 0;
+unsigned long int powerbank_activation_interval = 5 * 3600 * 1000; //5 hours
 
 
 void no_polling() {
@@ -19,7 +19,7 @@ void no_polling() {
 void try_to_add_new_transmitter() {
   boolean flag = true;
   while (digitalRead(button_pin) == LOW && flag) {
-    tone(alarm_pin, 1000);
+    tone(alarm_pin, 300);
     sleep_delay(mSLEEP_120MS);
     noTone(alarm_pin);
     sleep_delay(mSLEEP_250MS);
@@ -37,15 +37,14 @@ void try_to_add_new_transmitter() {
   }
 }
 
-
-
-
 volatile boolean life = false;
 
 ISR (WDT_vect)
 {
-  life = true;
+    life = true;
 }
+
+
 void polling_ok() {
   tone(alarm_pin, Do);
   sleep_delay(mSLEEP_120MS);
@@ -135,25 +134,24 @@ void prepare_after_unsleep() {
   wdt_reset();
   bluetooth.begin(9600);
   blink_red(blink_duration);
-  tone(alarm_pin, 2000, 200);
-  sleep_delay(mSLEEP_1S);
-  noTone(alarm_pin);
   show_battery_status();
   last_polling = millis();
 }
 
 void setup() {
-  //power_down_while_button_pressed_2s();
+  power_down_while_button_pressed_2s();
+  prepare_after_wake_up();
   prepare_after_unsleep();
-  powerbank_last_activation_time=millis();
+  powerbank_last_activation_time = millis();
 }
 void loop() {
-  if(millis-powerbank_last_activation_time>powerbank_activation_interval){
+  
+  if (millis - powerbank_last_activation_time > powerbank_activation_interval) {
     activate_power_bank();
-    powerbank_last_activation_time=millis();
-    }
+    powerbank_last_activation_time = millis();
+  }
   if ((millis() - last_polling) > polling_timeout) {
-      no_polling();
+    no_polling();
   }
   if (life) {
     life = false;
@@ -190,6 +188,8 @@ void loop() {
       polling_ok();
     }
   }
+  sleep_if_button_5s_pressed();
+
 }
 
 

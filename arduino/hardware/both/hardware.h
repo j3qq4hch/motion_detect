@@ -48,22 +48,24 @@ void release_led_pin() {
   pinMode(red_led_pin, INPUT);
 
 }
+
+void led_on(int pin) {
+  prepare_led_pin();
+  digitalWrite(pin, LOW);
+}
+
+void led_off(int pin) {
+  digitalWrite(pin, HIGH);
+  release_led_pin();
+}
+
 void blink_red(int duration) {
   prepare_led_pin();
+  led_on(red_led_pin);
   delay(duration);
   release_led_pin();
 }
 
-
-void led_on(int pin) {
-  prepare_led_pin();
-  digitalWrite(pin, HIGH);
-}
-
-void led_off(int pin) {
-  digitalWrite(pin, LOW);
-  release_led_pin();
-}
 void show_battery_status() {
   float b = battery_voltage();
   if (b > battery_high_voltage) {
@@ -93,9 +95,10 @@ void sensor_started() {
 void activate_power_bank(){
   pinMode(power_bank_activation_pin,OUTPUT);
   digitalWrite(power_bank_activation_pin,HIGH);
-  delay(1000);
+  delay(1);
   digitalWrite(power_bank_activation_pin,LOW);
   pinMode(power_bank_activation_pin,INPUT);
+  digitalWrite(power_bank_activation_pin,LOW);
   
   }
 

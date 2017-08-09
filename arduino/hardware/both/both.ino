@@ -1,3 +1,4 @@
+#include <MsTimer2.h>
 #include <SoftwareSerial.h>
 #include <avr/wdt.h>
 #include <avr/power.h>
@@ -12,6 +13,7 @@
 
 
 
+
 boolean power_plugged = false;
 
 
@@ -23,7 +25,7 @@ boolean power_plugged = false;
 //#define reflash true
 
 //  ID прошиваемого устройства
-String device_ID = "040055";
+String device_ID = "040056";
   #warning  Проверьте ID прошиваемого устройства, убедитесь что поставили актульный номер
 #ifdef reciever
   #include "reciever.h"
