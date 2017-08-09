@@ -1,4 +1,4 @@
-#include <MsTimer2.h>
+
 #include <SoftwareSerial.h>
 #include <avr/wdt.h>
 #include <avr/power.h>
@@ -18,7 +18,7 @@ boolean power_plugged = false;
 
 
 /// Для прошивки датчика - поставьте // в начале строки
-//#define reciever true
+#define reciever true
 
 
 //Раскоментируйте  следующую строку, если нужно перепроишть hc-12, неуспешно прошитую ранее микроконтроллером (влияет на hc12_init)
