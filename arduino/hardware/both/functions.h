@@ -9,6 +9,15 @@ const byte s2 = 0b000111;
 void(* resetFunc) (void) = 0;
 
 
+void sleep_if_button_5s_pressed(){
+  if (digitalRead(button_pin)==LOW){
+  delay(5000);
+    if (digitalRead(button_pin)==LOW){
+      resetFunc();
+     }
+  }
+  
+}
 void button_2_isr() {
   wdt_start = true;
   sleep_disable();

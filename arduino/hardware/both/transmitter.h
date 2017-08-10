@@ -90,15 +90,7 @@ void sleep_and_react (const byte interval){
   }
 
 }
-void sleep_if_button_5s_pressed(){
-  if (digitalRead(button_pin)==LOW){
-  delay(5000);
-    if (digitalRead(button_pin)==LOW){
-      resetFunc();
-     }
-  }
-  
-}
+
 void setup () {
   power_down_while_button_pressed_2s();
   led_on(red_led_pin);
