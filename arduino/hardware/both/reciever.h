@@ -8,15 +8,19 @@ unsigned long int powerbank_last_activation_time = 0;
 unsigned long int powerbank_activation_interval = 5L * 3600L * 1000L; //5 hours
 
 void idle_1s() {
+  wdt_enable();
+  wdt_reset(); 
+
+  noInterrupts();
   WDTCSR |= 0b00011000;               // устанавливаем WDCE, WDE
   WDTCSR =  0b01000000 | s1;  
-  
-  wdt_reset(); // сбрасываемwdt_reset(); // сбрасываем
-  
-  sei(); // разрешаем прерывания
+ 
+  interrupts ();
   set_sleep_mode(SLEEP_MODE_IDLE); // если спать - то на полную
+  
   sleep_enable(); // разрешаем сон
   sleep_cpu(); // спать!
+  sleep_disable();
 }
 
 void no_polling() {

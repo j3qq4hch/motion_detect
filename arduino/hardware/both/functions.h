@@ -55,7 +55,7 @@ void power_down_while_button_pressed_2s() {
   pinMode(button_pin, INPUT);
   wdt_disable();
   while (sleeping) {
-    ADCSRA = 0;
+   
 
     noInterrupts ();
     sleep_enable();
