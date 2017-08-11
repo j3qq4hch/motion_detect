@@ -1,23 +1,22 @@
 SoftwareSerial bluetooth(hm10_tx_pin, hm10_rx_pin);
 const String r_firmware_ver        = "f0.2";
-byte life_counter=0;
+byte life_counter = 0;
 String sensor_init_string = "";
 unsigned int last_polling = 0;
 String transmitter_ID;
 unsigned long int powerbank_last_activation_time = 0;
 unsigned long int powerbank_activation_interval = 5L * 3600L * 1000L; //5 hours
 
-void idle_1s(){
-        wdt_reset(); // сбрасываем
-        wdt_enable(WDTO_1S); // разрешаем ватчдог 1 сек
-        WDTCR |= _BV(WDIE); // разрешаем прерывания по ватчдогу. Иначе будет резет.
-        sei(); // разрешаем прерывания
-    
-        set_sleep_mode(SLEEP_MODE_IDLE); // если спать - то на полную
-        while(1) {
-                sleep_enable(); // разрешаем сон
-                sleep_cpu(); // спать!
-        }
+void idle_1s() {
+  WDTCSR |= 0b00011000;               // устанавливаем WDCE, WDE
+  WDTCSR =  0b01000000 | s1;  
+  
+  wdt_reset(); // сбрасываемwdt_reset(); // сбрасываем
+  
+  sei(); // разрешаем прерывания
+  set_sleep_mode(SLEEP_MODE_IDLE); // если спать - то на полную
+  sleep_enable(); // разрешаем сон
+  sleep_cpu(); // спать!
 }
 
 void no_polling() {
@@ -25,7 +24,7 @@ void no_polling() {
   tone(alarm_pin, 2000);
   sleep_delay(mSLEEP_250MS);
   noTone(alarm_pin);
-  last_polling = millis(); 
+  last_polling = millis();
 }
 
 void try_to_add_new_transmitter() {
@@ -149,7 +148,7 @@ void setup() {
   powerbank_last_activation_time = millis();
 }
 void loop() {
-  
+
   if (millis() - powerbank_last_activation_time > powerbank_activation_interval) {
     activate_power_bank();
     powerbank_last_activation_time = millis();
@@ -195,9 +194,9 @@ void loop() {
   sleep_if_button_5s_pressed();
   idle_1s();
   life_counter++;
-  if (life_counter==8){
+  if (life_counter == 8) {
     life = true;
-    life_counter=0;
+    life_counter = 0;
   }
 }
 
