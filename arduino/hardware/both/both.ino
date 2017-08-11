@@ -1,4 +1,3 @@
-#include <MsTimer2.h>
 #include <SoftwareSerial.h>
 #include <avr/wdt.h>
 #include <avr/power.h>
