@@ -13,7 +13,7 @@ void no_polling() {
   tone(alarm_pin, 2000);
   sleep_delay(mSLEEP_250MS);
   noTone(alarm_pin);
-  last_polling = millis();
+  last_polling = millis(); 
 }
 
 void try_to_add_new_transmitter() {

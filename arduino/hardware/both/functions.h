@@ -9,14 +9,26 @@ const byte s2 = 0b000111;
 void(* resetFunc) (void) = 0;
 
 
-void sleep_if_button_5s_pressed(){
-  if (digitalRead(button_pin)==LOW){
-  delay(5000);
-    if (digitalRead(button_pin)==LOW){
+void sleep_if_button_5s_pressed() {
+  if (digitalRead(button_pin) == LOW) {
+    delay(5000);
+    if (digitalRead(button_pin) == LOW) {
+      pinMode(alarm_pin, OUTPUT);
+      tone(alarm_pin, Sol);
+      sleep_delay(mSLEEP_120MS);
+      tone(alarm_pin, Mi);
+      sleep_delay(mSLEEP_120MS);
+      tone(alarm_pin, Do);
+      sleep_delay(mSLEEP_120MS);
+      noTone(alarm_pin);
+      pinMode(alarm_pin, INPUT);
       resetFunc();
-     }
+    }
   }
-  
+
+
+
+
 }
 void button_2_isr() {
   wdt_start = true;
@@ -49,9 +61,9 @@ void power_down_while_button_pressed_2s() {
     sleep_enable();
 
     attachInterrupt (1, button_2_isr, LOW);
-    MCUSR = 0;    
+    MCUSR = 0;
     noInterrupts ();
-                          // сбрасываем различные флаги
+    // сбрасываем различные флаги
     byte adcsra_save = ADCSRA;
     ADCSRA = 0;  // запрещаем работу АЦП
     //Disable ADC
@@ -63,9 +75,9 @@ void power_down_while_button_pressed_2s() {
     sleep_disable();
     power_all_enable();
     delay(millis_to_wakeup);
-    if (digitalRead(button_pin)==LOW){
-      sleeping=false;
-     }
+    if (digitalRead(button_pin) == LOW) {
+      sleeping = false;
+    }
   }
   t();
   detachInterrupt (digitalPinToInterrupt(button_pin));     // останавливаем прерывание LOW
@@ -75,7 +87,7 @@ void power_down_while_button_pressed_2s() {
 }
 
 
-void goto_sleep(){
+void goto_sleep() {
   tone(alarm_pin, Mi);
   sleep_delay(mSLEEP_120MS);
   tone(alarm_pin, Re);
