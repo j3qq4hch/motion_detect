@@ -30,7 +30,7 @@ ISR (WDT_vect)
   wdt_disable();  // отключаем сторожевой таймер
 }
 
-void sleep_and_react (const byte interval){
+void sleep_and_react (const byte interval) {
   if (pir_alarm && digitalRead(pir_pin) == HIGH )
   {
     if (!polling) {
@@ -94,15 +94,15 @@ void sleep_and_react (const byte interval){
 void setup () {
   power_down_while_button_pressed_2s();
   led_on(red_led_pin);
-  
+
   pinMode(pir_pin, INPUT);
   pinMode(power_plugged_pin, INPUT);
   pinMode(button_pin, INPUT);
 
   digitalWrite(pir_pin, LOW);
-  
+
   hc12_init();
-  Serial.print(id_cmd + device_ID + 'b' + battery_voltage()+firmware_ver);
+  Serial.print(id_cmd + device_ID + 'b' + battery_voltage() + firmware_ver);
   delay(hc12_SEND_DELAY);
   hc12_sleep();
   show_battery_status();
