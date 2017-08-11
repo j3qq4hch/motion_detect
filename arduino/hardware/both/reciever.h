@@ -47,7 +47,7 @@ void try_to_add_new_transmitter() {
     if (Serial.available()) {
       String s = Serial.readString();
       sleep_delay(mSLEEP_120MS);
-      if (s.length() == 12 && s.charAt(0) == id_cmd && isValidNumber(s)) {
+      if (s.charAt(0) == id_cmd && isValidNumber(s)) {
         transmitter_ID = getId(s);
         write_StringEE(transmitter_ID_eeprom_address, transmitter_ID);
         flag = false;
