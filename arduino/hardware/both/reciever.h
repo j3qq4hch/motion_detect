@@ -79,7 +79,7 @@ void alarm() {
   int k = 0;
   int j = 0;
   boolean flag = true;
-  prepare_led_pin();
+  prepare_led_pins();
   //  led_on(red_pin);
   for (k = 0; k < 3; k++) {
     j = 0;

@@ -18,6 +18,7 @@
 #define hc12_enable_pin                 A3
 
 #define red_led_pin                     A4
+#define green_led_pin                     A4
 #define bat_voltage_measure_pin         A6
 
 
@@ -42,16 +43,17 @@ void turn_5v_off() {
   pinMode(DC5_enable_pin, OUTPUT);
   digitalWrite(DC5_enable_pin, LOW);
 }
-void prepare_led_pin () {
+void prepare_led_pins () {
   pinMode(red_led_pin, OUTPUT);
+  pinMode(green_led_pin, OUTPUT);
 }
 void release_led_pin() {
   pinMode(red_led_pin, INPUT);
-
+  pinMode(green_led_pin, INPUT);
 }
 
 void led_on(int pin) {
-  prepare_led_pin();
+  prepare_led_pins();
   digitalWrite(pin, LOW);
 }
 
@@ -61,18 +63,35 @@ void led_off(int pin) {
 }
 
 void blink_red(int duration) {
-  prepare_led_pin();
+  prepare_led_pins();
   led_on(red_led_pin);
   delay(duration);
   release_led_pin();
 }
 
+void blink_green(int duration) {
+  prepare_led_pins();
+  led_on(green_led_pin);
+  delay(duration);
+  release_led_pin();
+}
+
+void blink_yellow(int duration) {
+  prepare_led_pins();
+  led_on(red_led_pin);
+  led_on(green_led_pin);
+  delay(duration);
+  release_led_pin();
+}
+
+
+
 void show_battery_status() {
   float b = battery_voltage();
   if (b > battery_high_voltage) {
-    blink_red(blink_long_duration);
+    blink_green(blink_long_duration);
   } else if (b > battery_medium_voltage) {
-    blink_red(blink_duration);
+    blink_yellow(blink_duration);
   }
   else {
     blink_red(blink_short_duration);
