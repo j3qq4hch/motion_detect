@@ -79,6 +79,7 @@ void alarm() {
   int k = 0;
   int j = 0;
   boolean flag = true;
+  pinMode(alarm_pin,OUTPUT);
   prepare_led_pins();
   //  led_on(red_pin);
   for (k = 0; k < 3; k++) {
@@ -119,6 +120,7 @@ void alarm() {
     }
   }
   noTone(alarm_pin);
+  pinMode(alarm_pin,INPUT);
 
 }
 
@@ -161,7 +163,6 @@ void setup() {
   powerbank_last_activation_time = millis();
 }
 void loop() {
-
   if (millis() - powerbank_last_activation_time > powerbank_activation_interval) {
     activate_power_bank();
     powerbank_last_activation_time = millis();
