@@ -10,6 +10,7 @@ unsigned long int powerbank_activation_interval = 5L * 3600L * 1000L; //5 hours
 void idle_1s() {
  
   byte adcsra_save = ADCSRA;
+
   
    cli(); 
     MCUSR = 0;   

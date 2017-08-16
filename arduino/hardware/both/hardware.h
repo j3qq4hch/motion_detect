@@ -18,7 +18,7 @@
 #define hc12_enable_pin                 A3
 
 #define red_led_pin                     A4
-#define green_led_pin                   A7
+#define green_led_pin                   13
 #define bat_voltage_measure_pin         A6
 
 
