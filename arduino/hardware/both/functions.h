@@ -51,8 +51,8 @@ void power_down_while_button_pressed_2s() {
   byte adcsra_save = ADCSRA;
   for (int i = 0; i < 20; i++ ) {
     pinMode(i, OUTPUT);
+    
   }
-  pinMode(red_led_pin, LOW);
   pinMode(button_pin, INPUT);
   wdt_disable();
   while (sleeping) {
