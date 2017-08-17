@@ -1,4 +1,8 @@
 String device_ID = "040056";
+//Раскоментируйте  следующую строку, если нужно перепроишть hc-12, неуспешно прошитую ранее микроконтроллером (влияет на hc12_init)
+//#define reflash true
+
+
 
 #include <SoftwareSerial.h>
 #include <avr/wdt.h>
@@ -22,13 +26,8 @@ boolean power_plugged = false;
 //#define reciever true
 
 
-//Раскоментируйте  следующую строку, если нужно перепроишть hc-12, неуспешно прошитую ранее микроконтроллером (влияет на hc12_init)
-//#define reflash true
 
 //  ID прошиваемого устройства
-
-
-
 
   #warning  Проверьте ID прошиваемого устройства, убедитесь что поставили актульный номер
 #ifdef reciever
