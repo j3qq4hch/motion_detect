@@ -26,13 +26,10 @@ boolean power_plugged = false;
 //#define reflash true
 
 //  ID прошиваемого устройства
-<<<<<<< HEAD
 
 
 
-=======
-String device_ID = "040053";
->>>>>>> origin/master
+
   #warning  Проверьте ID прошиваемого устройства, убедитесь что поставили актульный номер
 #ifdef reciever
   #include "reciever.h"
