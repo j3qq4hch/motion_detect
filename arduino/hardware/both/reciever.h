@@ -207,12 +207,12 @@ void loop() {
     }
   }
   sleep_if_button_5s_pressed();
-  idle_1s();
   life_counter++;
   if (life_counter == 8) {
     life = true;
     life_counter = 0;
   }
+ //  idle_1s();
 }
 
 
