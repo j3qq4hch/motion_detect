@@ -17,14 +17,14 @@ boolean power_plugged = false;
 
 
 /// Для прошивки датчика - поставьте // в начале строки
-#define reciever true
+//#define reciever true
 
 
 //Раскоментируйте  следующую строку, если нужно перепроишть hc-12, неуспешно прошитую ранее микроконтроллером (влияет на hc12_init)
 //#define reflash true
 
 //  ID прошиваемого устройства
-String device_ID = "040056";
+String device_ID = "040053";
   #warning  Проверьте ID прошиваемого устройства, убедитесь что поставили актульный номер
 #ifdef reciever
   #include "reciever.h"
