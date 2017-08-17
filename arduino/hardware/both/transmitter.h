@@ -74,6 +74,7 @@ void sleep_and_react (const byte interval) {
   sleep_enable();
   if (pass_first_alarms == 0 && !polling) {
     attachInterrupt (0, pir_interrupt, RISING);   // позволяем заземлить pin 2 для выхода из сна
+//    attachInterrupt (1, button_interrupt, FALLING);   // позволяем заземлить pin 2 для выхода из сна
   }
   interrupts ();
   sleep_cpu ();

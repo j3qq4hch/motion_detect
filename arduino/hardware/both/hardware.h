@@ -43,45 +43,33 @@ void turn_5v_off() {
   pinMode(DC5_enable_pin, OUTPUT);
   digitalWrite(DC5_enable_pin, LOW);
 }
-void prepare_led_pins () {
-  pinMode(red_led_pin, OUTPUT);
-  pinMode(green_led_pin, OUTPUT);
-}
-void release_led_pin() {
-  pinMode(red_led_pin, HIGH);
-  pinMode(green_led_pin, HIGH);
-}
 
 void led_on(int pin) {
-  prepare_led_pins();
   digitalWrite(pin, LOW);
 }
 
 void led_off(int pin) {
   digitalWrite(pin, HIGH);
-  release_led_pin();
 }
 
 void blink_red(int duration) {
-  prepare_led_pins();
   led_on(red_led_pin);
   delay(duration);
-  release_led_pin();
+  led_off(red_led_pin);
 }
 
 void blink_green(int duration) {
-  prepare_led_pins();
   led_on(green_led_pin);
   delay(duration);
-  release_led_pin();
+  led_off(green_led_pin);
 }
 
 void blink_yellow(int duration) {
-  prepare_led_pins();
   led_on(red_led_pin);
   led_on(green_led_pin);
   delay(duration);
-  release_led_pin();
+  led_off(red_led_pin);
+  led_off(green_led_pin);
 }
 
 

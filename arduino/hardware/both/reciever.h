@@ -84,8 +84,6 @@ void alarm() {
   int j = 0;
   boolean flag = true;
   pinMode(alarm_pin, OUTPUT);
-  prepare_led_pins();
-  //  led_on(red_pin);
   for (k = 0; k < 3; k++) {
     j = 0;
     if (flag) {
