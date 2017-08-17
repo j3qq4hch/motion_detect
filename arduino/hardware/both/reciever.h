@@ -8,20 +8,19 @@ unsigned long int powerbank_last_activation_time = 0;
 unsigned long int powerbank_activation_interval = 5L * 3600L * 1000L; //5 hours
 
 void idle_1s() {
- 
+
   byte adcsra_save = ADCSRA;
 
-  
-   cli(); 
-    MCUSR = 0;   
+  cli();
+  MCUSR = 0;
   WDTCSR |= 0b00011000;               // устанавливаем WDCE, WDE
   WDTCSR =  0b01000000 | 0b000110;   //1s
-  wdt_reset(); 
+  wdt_reset();
 
-  
+
   ADCSRA = 0;  // запрещаем работу АЦП
-   
-  
+
+
   set_sleep_mode(SLEEP_MODE_IDLE); // если спать - то на полную
   sei(); //interrupts ();
   sleep_mode();
@@ -29,8 +28,8 @@ void idle_1s() {
   wdt_reset();
   sleep_disable();
 
-  ADCSRA = adcsra_save;  
-  
+  ADCSRA = adcsra_save;
+
 }
 
 void no_polling() {
@@ -41,25 +40,29 @@ void no_polling() {
   last_polling = millis();
 }
 
-void try_to_add_new_transmitter() {
+String try_to_add_new_transmitter() {
+  String tr_ID="";
   boolean flag = true;
-  while (digitalRead(button_pin) == LOW && flag) {
-    tone(alarm_pin, 300);
-    sleep_delay(mSLEEP_120MS);
-    noTone(alarm_pin);
-    sleep_delay(mSLEEP_250MS);
-    if (Serial.available()) {
-      String s = Serial.readString();
+  if (digitalRead(button_pin) == LOW) {
+    while (digitalRead(button_pin) == LOW && flag) {
+      tone(alarm_pin, 300);
       sleep_delay(mSLEEP_120MS);
-      if (s.charAt(0) == id_cmd && isValidNumber(s)) {
-        transmitter_ID = getId(s);
-        write_StringEE(transmitter_ID_eeprom_address, transmitter_ID);
-        flag = false;
-        sensor_started();
+      noTone(alarm_pin);
+      sleep_delay(mSLEEP_250MS);
+      if (Serial.available()) {
+        String s = Serial.readString();
+        sleep_delay(mSLEEP_120MS);
+        if (s.charAt(0) == id_cmd && isValidNumber(s)) {
+          tr_ID=s;
+          transmitter_ID = getId(s);
+          write_StringEE(transmitter_ID_eeprom_address, transmitter_ID);
+          flag = false;
+          sensor_started();
+        }
       }
     }
-
   }
+  return tr_ID;
 }
 
 volatile boolean life = false;
@@ -80,7 +83,7 @@ void alarm() {
   int k = 0;
   int j = 0;
   boolean flag = true;
-  pinMode(alarm_pin,OUTPUT);
+  pinMode(alarm_pin, OUTPUT);
   prepare_led_pins();
   //  led_on(red_pin);
   for (k = 0; k < 3; k++) {
@@ -121,7 +124,7 @@ void alarm() {
     }
   }
   noTone(alarm_pin);
-  pinMode(alarm_pin,INPUT);
+  pinMode(alarm_pin, INPUT);
 
 }
 
@@ -131,17 +134,15 @@ void prepare_after_wake_up() {
   pinMode(button_pin, INPUT);
   digitalWrite(alarm_pin, LOW);
   hc12_init();
-  String s = read_StringEE(transmitter_ID_eeprom_address, 5);
-  if (!isValidNumber(s)) {
+  String new_tr_ID=try_to_add_new_transmitter();
+  if (new_tr_ID==""){
     transmitter_ID = device_ID;
     write_StringEE(transmitter_ID_eeprom_address, transmitter_ID);
   }
   else {
-    transmitter_ID = s;
+    transmitter_ID = new_tr_ID;
   }
-  if (digitalRead(button_pin) == LOW) {
-    try_to_add_new_transmitter();
-  }
+
   bluetooth.begin(9600);
   sleep_delay(mSLEEP_250MS);
   bluetooth.println(bluetooth_name_cmd + bluetooth_name_prefix + device_ID);
@@ -150,18 +151,14 @@ void prepare_after_wake_up() {
   Serial.print(looking_for_transmitter_cmd + transmitter_ID);
 }
 
-void prepare_after_unsleep() {
-  bluetooth.begin(9600);
-  blink_red(blink_duration);
-  show_battery_status();
-  last_polling = millis();
-}
 
 void setup() {
   power_down_while_button_pressed_2s();
   prepare_after_wake_up();
-  prepare_after_unsleep();
-  powerbank_last_activation_time = millis();
+  bluetooth.begin(9600);
+  check_leds();
+  show_battery_status();
+  last_polling = millis();  powerbank_last_activation_time = millis();
 }
 void loop() {
   if (millis() - powerbank_last_activation_time > powerbank_activation_interval) {
@@ -170,10 +167,6 @@ void loop() {
   }
   if ((millis() - last_polling) > polling_timeout) {
     no_polling();
-  }
-  if (life) {
-    life = false;
-    blink_red(blink_short_duration);
   }
   if (bluetooth.available()) {
     String bls = bluetooth.readString();
@@ -209,10 +202,10 @@ void loop() {
   sleep_if_button_5s_pressed();
   life_counter++;
   if (life_counter == 8) {
-    life = true;
+    blink_red(blink_short_duration);
     life_counter = 0;
   }
- //  idle_1s();
+  //  idle_1s();
 }
 
 

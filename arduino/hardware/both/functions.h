@@ -7,6 +7,7 @@ const unsigned int millis_to_wakeup = 4000;
 const unsigned int debounce_microseconds = 20000;
 const byte s2 = 0b000111;
 void(* resetFunc) (void) = 0;
+byte device_ID_length = device_ID.length();
 
 
 void sleep_if_button_5s_pressed() {
@@ -55,7 +56,7 @@ void power_down_while_button_pressed_2s() {
   pinMode(button_pin, INPUT);
   wdt_disable();
   while (sleeping) {
-   
+
 
     noInterrupts ();
     sleep_enable();
@@ -115,4 +116,8 @@ boolean isValidNumber(String str) {
   return false;
 }
 
-
+void check_leds() {
+  blink_green(500);
+  blink_red(500);
+  
+}

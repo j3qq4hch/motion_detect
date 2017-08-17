@@ -105,6 +105,7 @@ void setup () {
   Serial.print(id_cmd + device_ID + 'b' + battery_voltage() + firmware_ver);
   delay(hc12_SEND_DELAY);
   hc12_sleep();
+  check_leds();
   show_battery_status();
   turn_5v_on();
 }

@@ -1,5 +1,5 @@
 
-#define device_ID_length 6
+
 
 
 #define hc12_setted_eeprom_address 0

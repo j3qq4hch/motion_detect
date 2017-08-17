@@ -1,3 +1,5 @@
+String device_ID = "040056";
+
 #include <SoftwareSerial.h>
 #include <avr/wdt.h>
 #include <avr/power.h>
@@ -24,7 +26,9 @@ boolean power_plugged = false;
 //#define reflash true
 
 //  ID прошиваемого устройства
-String device_ID = "040056";
+
+
+
   #warning  Проверьте ID прошиваемого устройства, убедитесь что поставили актульный номер
 #ifdef reciever
   #include "reciever.h"

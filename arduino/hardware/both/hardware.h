@@ -48,8 +48,8 @@ void prepare_led_pins () {
   pinMode(green_led_pin, OUTPUT);
 }
 void release_led_pin() {
-  pinMode(red_led_pin, INPUT);
-  pinMode(green_led_pin, INPUT);
+  pinMode(red_led_pin, HIGH);
+  pinMode(green_led_pin, HIGH);
 }
 
 void led_on(int pin) {
