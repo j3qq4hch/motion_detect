@@ -53,6 +53,8 @@ void power_down_while_button_pressed_2s() {
     pinMode(i, OUTPUT);
     
   }
+  led_off(red_led_pin);
+  led_off(green_led_pin);
   pinMode(button_pin, INPUT);
   wdt_disable();
   while (sleeping) {
