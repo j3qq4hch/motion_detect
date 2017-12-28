@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<style>
+div {
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width:1px;
+}
+html, body {
+  background: #000;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+svg {
+  padding: 0px;
+  margin: 0px;
+}
+path {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+</style>
+<body>
+    <div style="font-weight: 700; shadow: 0 0 10px #9ecaed; position: absolute; font-family: Tahoma; bottom: 30vh; left: 11.1vw; font-size: 10vh; line-height: 10vh">C<span id="o" style="text-align">o</span>ngero</div>
+    <div style="font-weight: 900; shadow: 0 0 10px #9ecaed; position: absolute; font-family: Tahoma; bottom: 13%; left: 10.8vw; font-size: 5vh; line-height: 4vh">first decentralized<br>project incubator <br>powered by<br> blockchain</div>
+    <div style="font-weight: 900; shadow: 0 0 10px #9ecaed; position: absolute; font-family: Tahoma; bottom: 9%; left: 10.8vw; font-size: 3vh; line-height: 4vh">coming soon</div>
+    <a style="color: white; background-color: black; padding: 2px 5px 2px 5px; text-decoration: none; font-size: 2vh;  shadow: 0 0 10px #9ecaed; position: absolute; font-family: Tahoma; bottom: 6%; left: 10.8vw;" href="mailto:info@conge.ro">info@conge.ro</a>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+$(document).ready(function(){
+
+
+var start = Date.now(),
+    points = [];
+
+var width = window.innerWidth,
+    height = window.innerHeight;
+var bounds = d3.geom.polygon([
+  [-width / 2, -height / 2],
+  [-width / 2, +height / 2],
+  [+width / 2, +height / 2],
+  [+width / 2, -height / 2]
+]);
+var prepare=function(){
+  var width = window.innerWidth,
+      height = window.innerHeight;
+  var o=$("#o")[0].getBoundingClientRect();
+  $("#email").css('width',width/4)
+  var o_offset_x=-width/2+o.x+o.width*0.5
+  var o_offset_y=o.y-height/2+o.height*0.61;
+  points=[];
+  if (width>height) {
+  circle(o_offset_x, o_offset_y, height*0.05, 96, .001);
+  circle(o_offset_x, o_offset_y, height*0.03, 12, .03);
+  circle(o_offset_x, o_offset_y, height*0.01, 5, -.02);
+
+  circle(width/2-width*.167, -height/5, height*0.16, 24, -.002);
+  circle(width/2-width*.167, -height/5, height*0.08, 5, -.002);
+  circle(width/2-width*.167, -height/5, 0, 1, -.002);
+
+
+  circle(width/2-width*.167, height/5, height*0.04, 16, .002);
+  circle(width/2-width*.167, height/5, height*0.02, 16, -.002);
+  circle(width/2-width*.167, height/5, 0, 1, .002);
+}
+else {
+  circle(o_offset_x, o_offset_y, height*0.05, 96, .001);
+  circle(o_offset_x, o_offset_y, height*0.03, 12, .03);
+  circle(o_offset_x, o_offset_y, height*0.01, 5, -.02);
+
+}
+
+}
+prepare();
+var line = d3.svg.line()
+    .interpolate("basis-closed");
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+
+  .append("g")
+    .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+
+
+
+var path = svg.selectAll("path")
+    .data(points)
+  .enter().append("path");
+
+d3.timer(function() {
+  var voronoi = d3.geom.voronoi(points).map(function(cell) { return bounds.clip(cell); });
+  path.attr("d", function(point, i) { return line(resample(voronoi[i])); });
+});
+
+function resize(e){
+    x = window.innerWidth;
+    y = window.innerHeight;
+    svg.attr("width", x).attr("height", y);
+    prepare()
+
+}
+d3.select(window).on('resize', resize);
+
+function circle(cx, cy, r, n, δθ) {
+  d3.range(1e-6, 2 * Math.PI, 2 * Math.PI / n).map(function(θ, i) {
+    var point = [cx + Math.cos(θ) * r, cy + Math.sin(θ) * r];
+    d3.timer(function(elapsed) {
+      var angle = θ + δθ * elapsed / 60;
+      point[0] = cx + Math.cos(angle) * r;
+      point[1] = cy + Math.sin(angle) * r;
+    }, 0, start);
+    points.push(point);
+    return point;
+  });
+}
+
+function resample(points) {
+  var i = -1,
+      n = points.length,
+      p0 = points[n - 1], x0 = p0[0], y0 = p0[1], p1, x1, y1,
+      points2 = [];
+  while (++i < n) {
+    p1 = points[i], x1 = p1[0], y1 = p1[1];
+    points2.push(
+      [(x0 * 2 + x1) / 3, (y0 * 2 + y1) / 3],
+      [(x0 + x1 * 2) / 3, (y0 + y1 * 2) / 3],
+      p1
+    );
+    p0 = p1, x0 = x1, y0 = y1;
+  }
+  return points2;
+
+}
+});
+</script>
