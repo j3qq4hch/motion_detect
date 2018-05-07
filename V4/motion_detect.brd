@@ -24,7 +24,7 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -32,9 +32,9 @@
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
@@ -60,7 +60,7 @@
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="1" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="7" fill="1" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -168,6 +168,11 @@
 <text x="24.15" y="49" size="1.2" layer="1" font="vector" ratio="15" align="center">MOTION DETECT V4</text>
 <text x="12.85" y="44.5" size="1" layer="21" font="vector" ratio="15" rot="R180" align="center">BAT+</text>
 <text x="14.825" y="2.525" size="1" layer="21" font="vector" ratio="15" rot="R90" align="center">BAT-</text>
+<wire x1="21.7625" y1="43.944371875" x2="17.9519875" y2="41.744371875" width="0.15" layer="21"/>
+<wire x1="17.9519875" y1="41.744371875" x2="18.9394875" y2="40.033971875" width="0.15" layer="21"/>
+<wire x1="18.9394875" y1="40.033971875" x2="26.560509375" y2="44.433971875" width="0.15" layer="21"/>
+<wire x1="26.560509375" y1="44.433971875" x2="25.573009375" y2="46.144371875" width="0.15" layer="21"/>
+<wire x1="25.573009375" y1="46.144371875" x2="21.7625" y2="43.944371875" width="0.15" layer="21"/>
 </plain>
 <libraries>
 <library name="motion_detect_masterlib">
