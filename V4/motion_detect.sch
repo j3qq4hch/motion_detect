@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.0.0">
+<eagle version="7.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
-<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -15183,7 +15182,7 @@ http://dangerousprototypes.com</description>
 </library>
 <library name="TVS_diodes">
 <packages>
-<package name="SOD123" urn="urn:adsk.eagle:footprint:2473266/1">
+<package name="SOD123">
 <description>&lt;b&gt;SMALL OUTLINE DIODE&lt;/b&gt;</description>
 <wire x1="2.973" y1="-0.983" x2="-2.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="0.983" x2="2.973" y2="0.983" width="0.0508" layer="39"/>
@@ -15205,14 +15204,6 @@ http://dangerousprototypes.com</description>
 <text x="0" y="0" size="0.6" layer="25" font="vector" ratio="15" rot="R180" align="center">&gt;NAME</text>
 </package>
 </packages>
-<packages3d>
-<package3d name="SOD123" urn="urn:adsk.eagle:package:2473271/2" type="model">
-<description>&lt;b&gt;SMALL OUTLINE DIODE&lt;/b&gt;</description>
-<packageinstances>
-<packageinstance name="SOD123"/>
-</packageinstances>
-</package3d>
-</packages3d>
 <symbols>
 <symbol name="TVS">
 <wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.1524" layer="94"/>
@@ -15242,9 +15233,6 @@ http://dangerousprototypes.com</description>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="C" pad="C"/>
 </connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:2473271/2"/>
-</package3dinstances>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY#" value="1727-3838-2-ND" constant="no"/>
@@ -15306,7 +15294,8 @@ http://dangerousprototypes.com</description>
 <attributes>
 </attributes>
 <variantdefs>
-<variantdef name="BASIC"/>
+<variantdef name="AM612"/>
+<variantdef name="AM312"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0.2" drill="0">
@@ -15346,9 +15335,7 @@ http://dangerousprototypes.com</description>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M03X2" device="POGO_PINS"/>
 <part name="GND9" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="R13" library="rc" deviceset="R" device="-0603" value="1K"/>
-<part name="R4" library="rc" deviceset="R" device="-0603" value="4K7">
-<attribute name="ASSY" value="DNM"/>
-</part>
+<part name="R4" library="rc" deviceset="R" device="-0603" value="4K7"/>
 <part name="SW1" library="motion_detect_masterlib" deviceset="TACT_SWITCH" device="-IT-1102S" value="TACT_SWITCH-IT-1102S"/>
 <part name="GND7" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="GND37" library="supply_symbols" deviceset="GND" device="" value="GND"/>
@@ -15359,37 +15346,40 @@ http://dangerousprototypes.com</description>
 </part>
 <part name="U$4" library="eth_conv_master_lib" deviceset="FIDUCIALMOUNT" device="">
 <attribute name="BOM" value="EXCLUDE"/>
-<variant name="BASIC" populate="no"/>
+<variant name="AM612" populate="no"/>
+<variant name="AM312" populate="no"/>
 </part>
 <part name="U$6" library="eth_conv_master_lib" deviceset="FIDUCIALMOUNT" device="">
 <attribute name="BOM" value="EXCLUDE"/>
-<variant name="BASIC" populate="no"/>
+<variant name="AM612" populate="no"/>
+<variant name="AM312" populate="no"/>
 </part>
 <part name="TP4" library="pixhawk2" deviceset="PAD" device=".05">
 <attribute name="BOM" value="EXCLUDE"/>
 <attribute name="PARTNO" value="*"/>
-<variant name="BASIC" populate="no"/>
+<variant name="AM612" populate="no"/>
+<variant name="AM312" populate="no"/>
 </part>
 <part name="TP5" library="pixhawk2" deviceset="PAD" device=".05">
 <attribute name="BOM" value="EXCLUDE"/>
 <attribute name="PARTNO" value="*"/>
-<variant name="BASIC" populate="no"/>
+<variant name="AM612" populate="no"/>
+<variant name="AM312" populate="no"/>
 </part>
 <part name="TP6" library="pixhawk2" deviceset="PAD" device=".05">
 <attribute name="BOM" value="EXCLUDE"/>
 <attribute name="PARTNO" value="*"/>
-<variant name="BASIC" populate="no"/>
+<variant name="AM612" populate="no"/>
+<variant name="AM312" populate="no"/>
 </part>
 <part name="+P19" library="supply_symbols" deviceset="3.3V" device=""/>
 <part name="GND30" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="+P22" library="supply_symbols" deviceset="VBAT" device=""/>
 <part name="Z1" library="ExitControl_v2_master_library" deviceset="CRYSTAL-8MHZ" device="HC49UP" value="8MHz"/>
-<part name="LED5" library="dp_devices" deviceset="LED" device="-3MM">
+<part name="LED1" library="dp_devices" deviceset="LED" device="-3MM">
 <attribute name="COLOR" value="RED"/>
 </part>
-<part name="R22" library="rc" deviceset="R" device="-0603" value="4K7">
-<attribute name="ASSY" value="DNM"/>
-</part>
+<part name="R22" library="rc" deviceset="R" device="-0603" value="4K7"/>
 <part name="Q7" library="motion_detect_masterlib" deviceset="IRLML2244TRPBF" device=""/>
 <part name="R26" library="rc" deviceset="R" device="-0603" value="4K7"/>
 <part name="Q6" library="motion_detect_masterlib" deviceset="IRLML2502" device="-SOT23"/>
@@ -15397,7 +15387,9 @@ http://dangerousprototypes.com</description>
 <part name="R25" library="rc" deviceset="R" device="-0603" value="4K7"/>
 <part name="R20" library="rc" deviceset="R" device="-0603" value="1K"/>
 <part name="R27" library="rc" deviceset="R" device="-0603" value="1K"/>
-<part name="IC1" library="motion_detect_masterlib" deviceset="AM612" device=""/>
+<part name="IC1" library="motion_detect_masterlib" deviceset="AM612" device="">
+<variant name="AM312" populate="no"/>
+</part>
 <part name="PAD1" library="PADS" deviceset="PAD" device="-4X3"/>
 <part name="PAD2" library="PADS" deviceset="PAD" device="-4X3"/>
 <part name="Q1" library="motion_detect_masterlib" deviceset="IRLML2244TRPBF" device=""/>
@@ -15407,9 +15399,9 @@ http://dangerousprototypes.com</description>
 <part name="+P2" library="supply_symbols" deviceset="VBAT" device=""/>
 <part name="R2" library="rc" deviceset="R" device="-0603" value="1M"/>
 <part name="+P3" library="supply_symbols" deviceset="3.3V" device=""/>
-<part name="R5" library="rc" deviceset="R" device="-0603" value="val3"/>
-<part name="R6" library="rc" deviceset="R" device="-0603" value="val2"/>
-<part name="R7" library="rc" deviceset="R" device="-0603" value="val1"/>
+<part name="R5" library="rc" deviceset="R" device="-0603" value="330K"/>
+<part name="R6" library="rc" deviceset="R" device="-0603" value="330K"/>
+<part name="R7" library="rc" deviceset="R" device="-0603" value="330K"/>
 <part name="R3" library="rc" deviceset="R" device="-0603" value="1M"/>
 <part name="+P10" library="supply_symbols" deviceset="3.3V" device=""/>
 <part name="R8" library="rc" deviceset="R" device="-0603" value="000"/>
@@ -15424,7 +15416,7 @@ http://dangerousprototypes.com</description>
 <part name="GND4" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="C2" library="rc" deviceset="C" device="-0603" value="1uF"/>
 <part name="GND5" library="supply_symbols" deviceset="GND" device="" value="GND"/>
-<part name="R9" library="rc" deviceset="R" device="-0603" value="val1"/>
+<part name="R9" library="rc" deviceset="R" device="-0603" value="000"/>
 <part name="JP2" library="SparkFun" deviceset="ARDUINO_SERIAL_PROGRAM" device="PTH" value="FTDI Basic"/>
 <part name="GND8" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="+P13" library="supply_symbols" deviceset="VBAT" device=""/>
@@ -15432,9 +15424,11 @@ http://dangerousprototypes.com</description>
 <part name="GND10" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 <part name="R10" library="rc" deviceset="R" device="-0603" value="000"/>
 <part name="GND11" library="supply_symbols" deviceset="GND" device="" value="GND"/>
-<part name="D1" library="TVS_diodes" deviceset="PESD5V0S1BB,115" device="" package3d_urn="urn:adsk.eagle:package:2473271/2"/>
+<part name="D1" library="TVS_diodes" deviceset="PESD5V0S1BB,115" device=""/>
 <part name="SJ1" library="misc" deviceset="SOLDER_JOINT_2P" device=""/>
-<part name="IC2" library="motion_detect_masterlib" deviceset="AM312" device=""/>
+<part name="IC2" library="motion_detect_masterlib" deviceset="AM312" device="">
+<variant name="AM612" populate="no"/>
+</part>
 <part name="GND15" library="supply_symbols" deviceset="GND" device="" value="GND"/>
 </parts>
 <sheets>
@@ -15495,9 +15489,7 @@ http://dangerousprototypes.com</description>
 <instance part="JP1" gate="G$1" x="149.86" y="81.28"/>
 <instance part="GND9" gate="1" x="160.02" y="73.66"/>
 <instance part="R13" gate="G$1" x="248.92" y="101.6" rot="R90"/>
-<instance part="R4" gate="G$1" x="116.84" y="162.56" rot="R90">
-<attribute name="ASSY" x="116.84" y="162.56" size="1.27" layer="96" rot="R90" display="off"/>
-</instance>
+<instance part="R4" gate="G$1" x="116.84" y="162.56" rot="R90"/>
 <instance part="SW1" gate="G$1" x="236.22" y="99.06" rot="MR270"/>
 <instance part="GND7" gate="1" x="236.22" y="88.9" rot="MR0"/>
 <instance part="GND37" gate="1" x="248.92" y="91.44"/>
@@ -15528,12 +15520,10 @@ http://dangerousprototypes.com</description>
 <instance part="GND30" gate="1" x="243.84" y="43.18" rot="MR180"/>
 <instance part="+P22" gate="G$1" x="251.46" y="40.64"/>
 <instance part="Z1" gate="G$1" x="91.44" y="91.44" rot="R180"/>
-<instance part="LED5" gate="LED" x="248.92" y="114.3">
+<instance part="LED1" gate="LED" x="248.92" y="114.3">
 <attribute name="COLOR" x="248.92" y="114.3" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R22" gate="G$1" x="231.14" y="114.3" rot="MR270">
-<attribute name="ASSY" x="231.14" y="114.3" size="1.27" layer="96" rot="MR270" display="off"/>
-</instance>
+<instance part="R22" gate="G$1" x="231.14" y="114.3" rot="MR270"/>
 <instance part="Q7" gate="G$1" x="190.5" y="157.48" smashed="yes" rot="MR90">
 <attribute name="NAME" x="191.77" y="157.48" size="1.778" layer="95" font="vector" ratio="15" rot="R90" align="center"/>
 <attribute name="MANF#" x="193.04" y="166.37" size="1.27" layer="95" font="vector" ratio="15" rot="R180" align="center"/>
@@ -15922,7 +15912,7 @@ http://dangerousprototypes.com</description>
 <label x="127" y="132.08" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
-<pinref part="LED5" gate="LED" pin="A"/>
+<pinref part="LED1" gate="LED" pin="A"/>
 <wire x1="248.92" y1="116.84" x2="248.92" y2="119.38" width="0.1524" layer="91"/>
 <label x="248.92" y="119.38" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -16214,7 +16204,7 @@ http://dangerousprototypes.com</description>
 </net>
 <net name="N$12" class="0">
 <segment>
-<pinref part="LED5" gate="LED" pin="C"/>
+<pinref part="LED1" gate="LED" pin="C"/>
 <pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="248.92" y1="109.22" x2="248.92" y2="106.68" width="0.1524" layer="91"/>
 </segment>
@@ -16335,16 +16325,4 @@ http://dangerousprototypes.com</description>
 </sheets>
 </schematic>
 </drawing>
-<compatibility>
-<note version="8.3" severity="warning">
-Since Version 8.3, EAGLE supports URNs for individual library
-assets (packages, symbols, and devices). The URNs of those assets
-will not be understood (or retained) with this version.
-</note>
-<note version="8.3" severity="warning">
-Since Version 8.3, EAGLE supports the association of 3D packages
-with devices in libraries, schematics, and board files. Those 3D
-packages will not be understood (or retained) with this version.
-</note>
-</compatibility>
 </eagle>
